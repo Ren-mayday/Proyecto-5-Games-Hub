@@ -1,0 +1,20 @@
+// 1. Base
+@import "./base/variables";
+@import "./base/reset";
+@import "./base/base";
+
+// 2. Componentes
+@import "./components/button";
+@import "./components/header";
+@import "./components/title";
+
+// 3. Vistas
+@import "./views/home";
+@import "./views/tictactoe";
+@import "./views/snake";
+@import "./views/memory";
+
+// TIPOGRAFÍA
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+//! #ENTRADA PRINCIPAL (IMPORTA TODOS LOS PARCIALES, todos los demás archivos .scss)

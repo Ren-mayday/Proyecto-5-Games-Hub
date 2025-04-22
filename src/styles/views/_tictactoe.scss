@@ -1,0 +1,158 @@
+//! #ESTILOS ESPECÍFICOS DEL JUEGO TIC-TAC-TOE
+
+.tictactoe-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Press Start 2P", monospace;
+  background-color: $bcg-primary-color;
+
+  .title-tictactoe {
+    color: $title-primary-color;
+    font-size: 1.5rem;
+    margin: 2rem;
+  }
+
+  .score-display {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+
+    .score-item {
+      background-color: $color-bg-light;
+      color: $bcg-secondary-color;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .player.x {
+      color: #ff5959;
+    }
+
+    .player.o {
+      color: #00c3ff;
+    }
+  }
+
+  .reset-button,
+  .reset-game-button {
+    background-color: $color-bg-light;
+    color: white;
+    border: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #000;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: $btn-hover-color;
+    }
+  }
+
+  .game-status {
+    font-size: 0.9rem;
+    color: $title-secondary-color;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cell {
+    width: 100px;
+    height: 100px;
+    background-color: $bcg-secondary-color;
+    border: 2px solid $bcg-primary-color;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: $bcg-cell-hover-color;
+    }
+  }
+
+  .btn-back {
+    background-color: $color-bg-light;
+    color: white;
+    border-radius: 10px;
+    padding: 0.4rem 1rem;
+    font-size: 0.7rem;
+    border: none;
+    box-shadow: 0 0 5px #000;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: $btn-hover-color;
+    }
+  }
+}
+
+// Responsive
+@media screen and (max-width: 375px) {
+  .tictactoe-view {
+    padding: 1rem;
+
+    .title-tictactoe {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+
+    .score-display {
+      flex-direction: column;
+      gap: 1rem;
+
+      .score-item {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+
+    .reset-button,
+    .reset-game-button {
+      font-size: 0.7rem;
+      padding: 0.8rem;
+    }
+
+    .game-status {
+      font-size: 0.8rem;
+    }
+
+    .board {
+      grid-template-columns: repeat(3, 70px);
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cell {
+      width: 70px;
+      height: 70px;
+      font-size: 2rem;
+    }
+
+    .btn-back {
+      font-size: 0.6rem;
+      padding: 0.3rem 0.8rem;
+    }
+  }
+}

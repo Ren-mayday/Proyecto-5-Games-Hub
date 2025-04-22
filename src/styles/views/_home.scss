@@ -1,0 +1,199 @@
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  font-family: $font-primary;
+  color: #ff0;
+  text-shadow: 4px 4px 0px #f00, -2px -2px 0px #00f;
+}
+
+#home-header {
+  margin-bottom: 3rem;
+  border: 4px dashed #ff0;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 20px #f80;
+}
+
+.main-title-home {
+  text-shadow: 3px 3px 0px $color-primary; // 👈 Sombra sólida (no difuminada)
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.subtitle-home {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  color: #0ff;
+  text-shadow: 2px 2px 0px #f0f;
+}
+
+.main-title-home,
+.subtitle-home {
+  padding: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#game-section {
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  border-radius: 15px;
+  border: 3px solid #f80;
+  box-shadow: 0 0 30px #f80;
+
+  button {
+    margin: 0.5rem;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #fff;
+    }
+  }
+}
+
+.game-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* Efectos especiales */
+@keyframes neon-flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #f80,
+      0 0 80px #f80;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+/* Pixel art corner decorations */
+#home::before,
+#home::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f80;
+}
+
+#home::before {
+  top: 20px;
+  left: 20px;
+  border-right: none;
+  border-bottom: none;
+}
+
+#home::after {
+  bottom: 20px;
+  right: 20px;
+  border-left: none;
+  border-top: none;
+}
+
+#home-footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #fff; // Cambiado de #ccc a blanco puro
+  padding: 1rem;
+  border-top: 2px solid #f80;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85); // Aumentado la opacidad de 0.7 a 0.85
+  text-shadow: 1px 1px 1px #000; // Sombra de texto para mejor legibilidad
+  border-radius: 5px; // Opcional: bordes redondeados
+
+  a {
+    color: #0ff;
+    text-decoration: none;
+    font-weight: bold; // Hacer el enlace más visible
+    text-shadow: 1px 1px 1px #000; // Sombra también para el enlace
+
+    &:hover {
+      text-decoration: underline;
+      color: #ff0;
+      text-shadow: 1px 1px 1px #f80; // Cambio de sombra al hacer hover
+    }
+  }
+}
+
+/* --- Media Queries --- */
+/* Para tablets y móviles (768px o menos) */
+@media (max-width: 768px) {
+  /* Ajustes de texto/botones (tus reglas anteriores) */
+  #home-header {
+    margin-bottom: 1.5rem;
+  }
+  .main-title-home {
+    font-size: 1.2rem;
+  }
+
+  /* Nuevos ajustes para las esquinas */
+  #home::before,
+  #home::after {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+  }
+  #home::before {
+    top: 10px;
+    left: 10px;
+  }
+  #home::after {
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* Para móviles pequeños (375px o menos) */
+@media (max-width: 375px) {
+  /* Ajustes de texto/botones (tus reglas anteriores) */
+  #game-section {
+    padding: 1rem;
+  }
+
+  /* Nuevos ajustes para las esquinas */
+  #home::before,
+  #home::after {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+  }
+}
