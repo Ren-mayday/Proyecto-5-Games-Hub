@@ -1,1 +1,88 @@
 //! #ESTILOS ESPECÍFICOS DEL JUEGO SNAKE
+
+.game-container {
+  background-color: $bcg-neutral-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  .btn-back,
+  .start-btn {
+    background-color: $color-primary;
+    color: $bcg-secondary-color;
+    border-radius: 10px;
+    padding: 0.4rem 1rem;
+    margin: 20px;
+  }
+
+  .title-snake {
+    color: $snake-main-title;
+    text-shadow: 0 0 10px $color-accent;
+    margin: 20px;
+  }
+  .score-text {
+    color: $bcg-secondary-color;
+    margin: 20px;
+  }
+
+  #game-canvas {
+    border: 2px solid $bcg-neutral-dark;
+    background-color: $bcg-board-snake;
+    width: 90vmin;
+    height: 50vmin;
+    max-width: 650px;
+    image-rendering: pixelated;
+    box-shadow: 0 0 15px $color-accent;
+  }
+
+  #touch-controls {
+    display: none;
+
+    @media (max-width: 1024px) {
+      display: grid;
+      margin-top: 1rem;
+
+      .d-pad {
+        display: grid;
+        grid-template-areas:
+          ".    up    ."
+          "left none right"
+          ".   down   .";
+        place-items: center;
+      }
+
+      .control-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        background-color: $color-primary;
+        color: $bcg-secondary-color;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 0 5px $color-accent;
+        cursor: pointer;
+
+        &.up {
+          grid-area: up;
+        }
+        &.left {
+          grid-area: left;
+        }
+        &.right {
+          grid-area: right;
+        }
+        &.down {
+          grid-area: down;
+        }
+        &:hover {
+          background-color: lighten($color-primary, 10%);
+        }
+      }
+    }
+  }
+}

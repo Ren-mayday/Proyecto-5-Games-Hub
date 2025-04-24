@@ -1,6 +1,7 @@
 import { showHome } from "./views/homeView.js";
 import { renderTicTacToe } from "./games/tictactoe/dom.js";
 import { initializeGame } from "./games/tictactoe/game.js";
+import { createSnakeGameElements } from "./games/snake/dom.js";
 
 //! # ✅CONTROLA LA NAVEGACIÓN ENTRE JUEGOS
 
@@ -12,7 +13,9 @@ const routes = {
     const container = renderTicTacToe();
     initializeGame();
   },
-  snake: () => console.log("Aquí iría el Snake"),
+  snake: () => {
+    const container = createSnakeGameElements();
+  },
   memory: () => console.log("Aquí iría el Memory"),
 };
 
