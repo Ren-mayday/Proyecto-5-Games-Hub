@@ -1,15 +1,23 @@
 import { createTitle } from "../../components/title";
 import { createButton } from "../../components/button";
+import { navigateTo } from "../../router";
 import { createModal } from "../../components/modal";
 import { displayHighScores } from "./storage";
 import { startMemoryGame } from "./game";
 
 export const renderBoardGame = () => {
-  const app = document.getElementById("app");
-  app.innerHTML = "";
+  const root = document.getElementById("app");
+  root.innerHTML = "";
 
+  const container = document.createElement("main");
+  container.classList.add("memory-view");
+
+  // --- HEADER ---
   const header = document.createElement("header");
-  const heading = createTitle("Memory Game", 1, "memory-title");
+  header.className = "memory-header";
+
+  const title = createTitle("Memory Game", 1, "memory-title");
+  const backButton = createButton("← Volver a Home", () => navigateTo("home"), "btn-back");
 
   const controlsDiv = document.createElement("div");
   controlsDiv.className = "game-controls";
@@ -18,28 +26,24 @@ export const renderBoardGame = () => {
   scoreContainer.className = "score";
   scoreContainer.innerHTML = 'Pares: <span id="score">0</span>';
 
-  const restartBtn = createButton(
-    "Reiniciar",
-    () => {
-      window.location.reload();
-    },
-    "restart"
-  );
+  const restartBtn = createButton("Reiniciar", () => window.location.reload(), "restart");
 
   const timeContainer = document.createElement("div");
   timeContainer.className = "timer";
   timeContainer.innerHTML = 'Tiempo: <time id="time">00:00</time>';
 
   controlsDiv.append(scoreContainer, restartBtn, timeContainer);
-  header.append(heading, controlsDiv);
 
-  const main = document.createElement("main");
+  // 👉 Aquí estaba el error: heading no existe
+  header.append(backButton, title, controlsDiv);
+
+  // --- GAME BOARD ---
   const gameContainer = document.createElement("div");
   gameContainer.id = "game-container";
   gameContainer.className = "memory-game";
 
-  main.appendChild(gameContainer);
-  app.append(header, main);
+  container.append(header, gameContainer);
+  root.append(container);
 
   return gameContainer;
 };
@@ -93,7 +97,5 @@ const formatTime = (ms) => {
   const seconds = Math.floor(ms / 1000);
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
-  return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
-    .toString()
-    .padStart(2, "0")}`;
+  return `${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
 };

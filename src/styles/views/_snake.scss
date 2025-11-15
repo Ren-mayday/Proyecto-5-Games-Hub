@@ -1,47 +1,64 @@
 //! #ESTILOS ESPECÍFICOS DEL JUEGO SNAKE
+@use "../base/variables" as *;
 
 .game-container {
-  background-color: $bcg-neutral-dark;
+  background-color: $snake-bg-dark;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  width: 100vw;
+  padding: 1rem;
+  box-sizing: border-box;
 
+  // Ajuste de textos para que se escalen
+  .title-snake {
+    color: $snake-title;
+    text-shadow: 0 0 10px $neon-blue;
+    margin: 1rem 0;
+    font-size: clamp(1.5rem, 4vmin, 2.5rem); // escala con pantalla
+    text-align: center;
+  }
+
+  .score-text {
+    color: $tictactoe-board-white;
+    margin: 0.5rem 0;
+    font-size: clamp(1rem, 3vmin, 1.5rem);
+  }
+
+  // Botones generales
   .btn-back,
   .start-btn {
-    background-color: $color-primary;
-    color: $bcg-secondary-color;
+    background-color: $neon-pink;
+    color: $tictactoe-board-white;
     border-radius: 10px;
-    padding: 0.4rem 1rem;
-    margin: 20px;
+    padding: clamp(0.3rem, 1.5vmin, 0.6rem) clamp(0.8rem, 3vmin, 1.2rem);
+    margin: 1rem;
+    font-size: clamp(0.8rem, 2vmin, 1rem);
+    cursor: pointer;
   }
 
-  .title-snake {
-    color: $snake-main-title;
-    text-shadow: 0 0 10px $color-accent;
-    margin: 20px;
-  }
-  .score-text {
-    color: $bcg-secondary-color;
-    margin: 20px;
-  }
-
+  // Canvas ajustable
   #game-canvas {
-    border: 2px solid $bcg-neutral-dark;
-    background-color: $bcg-board-snake;
-    width: 90vmin;
-    height: 50vmin;
+    border: 2px solid $snake-bg-dark;
+    background-color: $snake-board-bg;
+    width: 80vmin; // ocupa gran parte de la pantalla
     max-width: 650px;
+    aspect-ratio: 2 / 1; // rectangular
     image-rendering: pixelated;
-    box-shadow: 0 0 15px $color-accent;
+    box-shadow: 0 0 15px $neon-blue;
+    margin: 1rem 0;
   }
 
+  // Controles táctiles
   #touch-controls {
     display: none;
 
     @media (max-width: 1024px) {
       display: grid;
+      width: 60vmin;
+      max-width: 300px;
       margin-top: 1rem;
 
       .d-pad {
@@ -57,14 +74,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        background-color: $color-primary;
-        color: $bcg-secondary-color;
+        width: 12vmin;
+        height: 12vmin;
+        font-size: 4vmin;
+        background-color: $neon-pink;
+        color: $tictactoe-board-white;
         border: none;
         border-radius: 8px;
-        box-shadow: 0 0 5px $color-accent;
+        box-shadow: 0 0 5px $neon-blue;
         cursor: pointer;
 
         &.up {
@@ -79,10 +96,71 @@
         &.down {
           grid-area: down;
         }
+
         &:hover {
-          background-color: lighten($color-primary, 10%);
+          background-color: lighten($neon-pink, 10%);
         }
       }
     }
+
+    @media (max-width: 400px) {
+      width: 50vmin;
+
+      .control-btn {
+        width: 10vmin;
+        height: 10vmin;
+        font-size: 3.5vmin;
+      }
+    }
   }
+}
+
+@media (max-width: 375px) {
+  .game-container {
+    padding: 0.5rem;
+
+    .title-snake {
+      font-size: clamp(1rem, 5vw, 1.2rem);
+      margin: 0.5rem 0;
+      margin-top: 3rem;
+    }
+
+    .score-text {
+      font-size: clamp(0.8rem, 4vw, 1rem);
+      margin: 0.3rem 0;
+    }
+
+    #game-canvas {
+      width: 90vw; // ocupa casi todo el ancho
+      max-width: 320px; // no se salga
+      aspect-ratio: 2 / 1; // conserva proporción
+      margin: 0.5rem 0;
+    }
+
+    #touch-controls {
+      width: 80vw; // para que quepa la botonera
+      max-width: 280px;
+
+      .control-btn {
+        width: 10vw; // botones más pequeños
+        height: 10vw;
+        font-size: 3vw;
+      }
+    }
+
+    .btn-back,
+    .start-btn {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      margin: 0.5rem;
+    }
+  }
+}
+
+// Fijar el botón "Volver" para asegurar visibilidad
+.btn-back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
 }

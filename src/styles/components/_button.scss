@@ -1,4 +1,5 @@
 //! #BOTONES ARCADE (VERSIÓN SUBTIL)
+@use "../base/variables" as *;
 
 button {
   // Estilo base modernizado
@@ -7,7 +8,7 @@ button {
   border-radius: 4px; // 👈 Bordes ligeramente redondeados para suavizar
   cursor: pointer;
   font-size: 1rem;
-  font-family: $font-primary;
+  font-family: $font-arcade;
   text-transform: uppercase;
   letter-spacing: 1px; // 👈 Más compacto
   color: white;
@@ -28,18 +29,18 @@ button {
 
   // Estilos específicos por juego (sin text-shadow)
   &.btn-tictactoe {
-    background: $color-secondary;
-    border-bottom: 3px solid lighten($color-secondary, 15%);
+    background: $neon-purple;
+    border-bottom: 3px solid lighten($neon-purple, 15%);
   }
 
   &.btn-snake {
-    background: $color-accent;
-    border-bottom: 3px solid lighten($color-accent, 15%);
+    background: $neon-blue;
+    border-bottom: 3px solid lighten($neon-blue, 15%);
   }
 
   &.btn-memory {
     background: #00cc5a; // 👈 Verde menos intenso
-    color: $color-text-dark;
+    color: $text-black;
     border-bottom: 3px solid lighten(#00cc5a, 10%);
   }
 }

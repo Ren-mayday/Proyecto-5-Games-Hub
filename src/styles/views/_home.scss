@@ -1,15 +1,29 @@
+@use "../base/variables" as *;
+
 #home {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
   text-align: center;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  font-family: $font-primary;
+  font-family: $font-arcade;
   color: #ff0;
   text-shadow: 4px 4px 0px #f00, -2px -2px 0px #00f;
+  overflow-x: hidden; // evita overflow horizontal
+  overflow-y: auto; // permite scroll vertical si el contenido no cabe
+
+  // Wrapper interno para centrar correctamente
+  .home-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // centra verticalmente
+    align-items: center;
+    gap: 2rem; // espacio entre header, game-section y footer
+    max-height: 90vh; // limita altura para pantallas altas
+    width: 100%;
+  }
 }
 
 #home-header {
@@ -21,7 +35,7 @@
 }
 
 .main-title-home {
-  text-shadow: 3px 3px 0px $color-primary; // 👈 Sombra sólida (no difuminada)
+  text-shadow: 3px 3px 0px $neon-pink; // 👈 Sombra sólida (no difuminada)
   font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: bold;
   letter-spacing: 2px;
@@ -61,6 +75,8 @@
   border-radius: 15px;
   border: 3px solid #f80;
   box-shadow: 0 0 30px #f80;
+  width: 100%; // nuevo: asegura que no se desborde
+  max-width: 1200px; // opcional: limita ancho en pantallas grandes
 
   button {
     margin: 0.5rem;
@@ -94,8 +110,7 @@
   54%,
   56%,
   100% {
-    text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #f80,
-      0 0 80px #f80;
+    text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #f80, 0 0 80px #f80;
   }
   20%,
   24%,
@@ -155,9 +170,16 @@
 }
 
 /* --- Media Queries --- */
+
+@media (min-width: 1024px) {
+  #home .home-wrapper {
+    gap: 3rem; // más espacio entre secciones en pantallas grandes
+  }
+}
+
 /* Para tablets y móviles (768px o menos) */
 @media (max-width: 768px) {
-  /* Ajustes de texto/botones (tus reglas anteriores) */
+  /* Ajustes de texto/botones */
   #home-header {
     margin-bottom: 1.5rem;
   }

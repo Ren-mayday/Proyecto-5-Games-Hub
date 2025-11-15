@@ -4,51 +4,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 // FONT
-$font-primary: "Press Start 2P", cursive; // Para los elementos arcade
+$font-arcade: "Press Start 2P", cursive;
 
-// PALETA ARCADE 80s
-$color-primary: #ff3864; // Rosa eléctrico
-$color-secondary: #6e44ff; // Morado neón (para Tres en Raya)
-$color-accent: #2bd1fc; // Azul brillante (para Snake)
-$color-memory: #20d870; // Verde más fuerte para Memory Game
-$color-text-dark: #000;
-$color-bg-light: #0e002b; // Fondo morado oscuro
+//! 🎨 PALETA ARCADE 80s (general)
+$neon-pink: #ff3864; // Antes: $color-pink-neon
+$neon-purple: #6e44ff; // Antes: $color-purple-neon
+$neon-blue: #2bd1fc; // Antes: $color-blue-neon
+$neon-green: #20d870; // Antes: $color-green-neon
 
-// PALETA TRES EN RAYA
-$bcg-primary-color: #6638e3;
-$bcg-secondary-color: #fff;
-$title-primary-color: #333;
-$title-secondary-color: #666;
-$bcg-cell-hover-color: #f5f5f5;
-$bcg-cell-win-color: #e6f3ff;
-$btn-hover-color: #bea7fd;
+$text-black: #000000;
+$bg-dark-purple: #0e002b; // Fondo global (home, UI)
 
-// PALETA SNAKE
-$bcg-neutral-dark: #1a1a1a;
-$snake-main-title: #0ff;
-$neutral-light: #121212;
-$bcg-board-snake: #e0e0e0;
+//! 🎮 PALETA TIC TAC TOE
+$tictactoe-board-purple: #6638e3; // Fondo del tablero
+$tictactoe-board-white: #ffffff; // Casillas vacías
 
-// PALETA MEMORY GAME
-$color-bg-memory: #3a0ca3;
+// Tipografía y títulos
+$tictactoe-text-primary: #333333;
+$tictactoe-text-secondary: #666666;
 
-// Efectos especiales
+// Interacciones
+$tictactoe-cell-hover: #f5f5f5;
+$tictactoe-cell-win: #e6f3ff;
+
+// Botones
+$tictactoe-btn-hover: #bea7fd;
+
+//! 🐍 PALETA SNAKE
+$snake-bg-dark: #1a1a1a; // Antes: $bcg-bg-dark
+$snake-bg-light: #121212; // Antes: $neutral-bg-light
+$snake-board-bg: #e0e0e0; // Antes: $bcg-board-bg
+$snake-title: #00ffff; // Antes: $snake-title-color
+
+//! 🧩 PALETA MEMORY GAME
+$memory-purple: #3a0ca3; // Antes: $color-bg-purple
+
+//! ✨ EFECTOS ESPECIALES
 $neon-glow: 0 0 10px currentColor, 0 0 20px currentColor;
-
-:root {
-  --pixel-ratio: 1; // Ajusta según dispositivo (2 para HiDPI)
-}
-
-// Pixel perfect rendering
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  :root {
-    --pixel-ratio: 2;
-  }
-}
-
-.pixel-perfect {
-  font-family: $font-primary;
-  transform: scale(calc(1 / var(--pixel-ratio)));
-  transform-origin: top left;
-  display: inline-block; // Necesario para transform
-}

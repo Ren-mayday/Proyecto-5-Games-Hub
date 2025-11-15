@@ -1,0 +1,19 @@
+// Pixel ratio config
+@use "./variables" as *;
+
+:root {
+  --pixel-ratio: 1;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  :root {
+    --pixel-ratio: 2;
+  }
+}
+
+.pixel-perfect {
+  font-family: $font-arcade;
+  transform: scale(calc(1 / var(--pixel-ratio)));
+  transform-origin: top left;
+  display: inline-block;
+}
