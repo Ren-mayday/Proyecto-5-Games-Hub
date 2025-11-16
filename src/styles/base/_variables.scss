@@ -1,4 +1,10 @@
 //! #COLORES, TAMAÑOS, ETC.
+@use "sass:color";
+
+// Defino una función para el lighten
+@function lighten($color, $amount) {
+  @return color.adjust($color, $lightness: $amount);
+}
 
 // IMPORT DE FUENTE
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
